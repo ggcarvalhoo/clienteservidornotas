@@ -1,11 +1,15 @@
 package main
 
+//Importando pacotes
+
 import (
 	"bytes"
 	"encoding/json"
 	"fmt"
 	"net/http"
 )
+
+//Estruturação dos dados
 
 type Nota struct {
 	Nome string  `json:"nome"`
@@ -36,6 +40,8 @@ func main() {
 	if err := json.NewEncoder(&body).Encode(notas); err != nil {
 		panic(err)
 	}
+
+	// http post envia dados para o servidor
 
 	resp, err := http.Post("http://localhost:8080/nota", "application/json", &body)
 	if err != nil {

@@ -1,15 +1,22 @@
 package main
 
+//Importando pacotes
+
 import (
 	"encoding/json"
 	"fmt"
 	"net/http"
 )
 
+//Estruturação dos dados
+
 type Nota struct {
 	Nome string  `json:"nome"`
 	Nota float64 `json:"nota"`
 }
+
+// Função com as notas estáticas do servidor
+// Método ListenAndServe inicia um servidor HTTP com o endereço determinado
 
 func main() {
 
@@ -19,6 +26,8 @@ func main() {
 
 	http.ListenAndServe(":8080", nil)
 }
+
+// função para calcular nota utilizando como parametros metodos que permitem a construção da resposta HTTP e trata exceções
 
 func calculaNota(w http.ResponseWriter, r *http.Request) {
 	notas := []Nota{}
